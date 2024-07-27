@@ -207,3 +207,11 @@ mega:
   Grade: Silver
   Category: Software
   Icon: mega.png
+
+dnspy-ex:
+  Arch: win64
+  Name: dnSpyEx
+  Grade: Gold
+  Description: "dnSpy is a tool to work with .NET assemblies and executables. It allows you to edit, modify, and debug .NET assemblies."
+  Category: Software
+  Icon: dnSpy-ex.png

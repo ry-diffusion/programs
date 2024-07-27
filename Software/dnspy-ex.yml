@@ -1,0 +1,34 @@
+Name: dnSpy-ex
+Description: dnSpyEx is a tool to work with .NET assemblies and executables. It allows you to edit, modify, and debug .NET assemblies.
+Grade: Gold
+Arch: win64
+
+Dependencies:
+  - dotnet40
+  - allfonts
+
+Executable:
+  name: dnSpy
+  icon: dnSpy-ex.png
+  path: users/Public/dnspy-ex/dnSpy.exe
+  file: dnSpy.exe
+  arguments: "WINEDLLOVERRIDES=mscoree=n,b;mshtml=n,b;msxml3=n,b;msxml4 %command%"
+
+Checks:
+  files:
+    - users/Public/dnspy-ex/dnSpy.exe
+
+Steps:
+  - action: run_script
+    script: |
+      version='6.5.1'
+      url="https://github.com/dnSpyEx/dnSpy/releases/download/v${version}/dnSpy-net-win64.zip"
+      workdir='!bottle_drive/users/Public/dnspy-ex'
+      file=$(realpath "dnspy-$version.zip")
+
+      wget "$url" -O "$file"
+      rm -rf "$workdir"
+      mkdir -p "$workdir"
+      cd "$workdir"
+      unzip "$file"
+      rm -f "$file"
